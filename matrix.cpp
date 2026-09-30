@@ -155,7 +155,6 @@ void updateElement(vector<vector<int>>& matrix, int row, int col, int newVal) {
 
 
 
-
 //--------------------
 
 int main() {
@@ -180,7 +179,7 @@ int main() {
 //Read values into the first matrix
     for (int i = 0; i < N; i++) {
     for (int j = 0; j < N; j++) {
-// Read a number from the file and store it at row i, column j
+//read a number from the file and store it at row i, column j
         inputFile >> matrix1[i][j];
     }
 }
@@ -223,6 +222,11 @@ diagonalSums(matrix1);
 
 //--------------------
 
+//make separate copies of matrix 1 for problems 5 6 7
+vector<vector<int>> rowMatrix = matrix1;
+vector<vector<int>> colMatrix = matrix1;
+vector<vector<int>> updateMatrix = matrix1;
+
 //ask the user which rows to swap
 int row1, row2;
 
@@ -230,11 +234,11 @@ cout << "\nEnter two rows to swap: ";
 cin >> row1 >> row2;
 
 //swap the rows
-swapRows(matrix1, row1, row2);
+swapRows(rowMatrix, row1, row2);
 
 //print the matrix after the swap
 cout << "\nMatrix after row swap:\n";
-printMatrix(matrix1);
+printMatrix(rowMatrix);
 
 //--------------------
 
@@ -245,13 +249,14 @@ cout << "\nEnter two columns to swap: ";
 cin >> col1 >> col2;
 
 //swap the columns
-swapColumns(matrix1, col1, col2);
+swapColumns(colMatrix, col1, col2);
 
 //print the matrix after the column swap
 cout << "\nMatrix after column swap:\n";
-printMatrix(matrix1);
+printMatrix(colMatrix);
 
 //--------------------
+
 //ask the user which rows,columns, and new value to swap/add
 int row, col, newVal;
 
@@ -259,12 +264,13 @@ cout << "\nEnter row, column, and new value: ";
 cin >> row >> col >> newVal;
 
 //update the new matrix with the new value added
-updateElement(matrix1, row, col, newVal);
+updateElement(updateMatrix, row, col, newVal);
 
 //print the updated matrix
 cout << "\nMatrix after element update:\n";
-printMatrix(matrix1);
+printMatrix(updateMatrix);
 
+//--------------------
 
     return 0;
 }
